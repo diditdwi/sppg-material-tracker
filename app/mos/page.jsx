@@ -20,6 +20,9 @@ export default function MOSPage() {
     const [reportText, setReportText] = useState('');
     const [loadingReport, setLoadingReport] = useState(false);
 
+    // Filter State
+    const [filterCategory, setFilterCategory] = useState("ALL"); // "ALL", "BANDUNG", "SOREANG"
+
     // Authentication check
     useEffect(() => {
         if (!isLoading && !isAuthenticated) {
@@ -191,15 +194,15 @@ export default function MOSPage() {
             </header>
 
             <div className="grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', marginBottom: '30px' }}>
-                <div className="card" style={{ flexDirection: 'column', alignItems: 'center', padding: '20px 10px', gap: '8px' }}>
+                <div onClick={() => setFilterCategory("ALL")} className="card" style={{ flexDirection: 'column', alignItems: 'center', padding: '20px 10px', gap: '8px', cursor: 'pointer', border: filterCategory === "ALL" ? '2px solid #0071e3' : '2px solid transparent' }}>
                     <div style={{ fontSize: '24px', fontWeight: 700, color: '#0071e3' }}>{mosData.length}</div>
                     <div style={{ fontSize: '12px', color: '#86868b', textAlign: 'center' }}>Siap MOS</div>
                 </div>
-                <div className="card" style={{ flexDirection: 'column', alignItems: 'center', padding: '20px 10px', gap: '8px' }}>
+                <div onClick={() => setFilterCategory("BANDUNG")} className="card" style={{ flexDirection: 'column', alignItems: 'center', padding: '20px 10px', gap: '8px', cursor: 'pointer', border: filterCategory === "BANDUNG" ? '2px solid #34c759' : '2px solid transparent' }}>
                     <div style={{ fontSize: '24px', fontWeight: 700, color: '#34c759' }}>{mosData.filter(d => (d.areaConfirmed || '').toLowerCase().includes('bandung')).length}</div>
                     <div style={{ fontSize: '12px', color: '#86868b', textAlign: 'center' }}>Bandung</div>
                 </div>
-                <div className="card" style={{ flexDirection: 'column', alignItems: 'center', padding: '20px 10px', gap: '8px' }}>
+                <div onClick={() => setFilterCategory("SOREANG")} className="card" style={{ flexDirection: 'column', alignItems: 'center', padding: '20px 10px', gap: '8px', cursor: 'pointer', border: filterCategory === "SOREANG" ? '2px solid #ff9500' : '2px solid transparent' }}>
                     <div style={{ fontSize: '24px', fontWeight: 700, color: '#ff9500' }}>{mosData.filter(d => (d.areaConfirmed || '').toLowerCase().includes('soreang')).length}</div>
                     <div style={{ fontSize: '12px', color: '#86868b', textAlign: 'center' }}>Soreang</div>
                 </div>
@@ -216,7 +219,12 @@ export default function MOSPage() {
                     </div>
                 ) : (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                        {mosData.map((item, index) => (
+                        {mosData.filter(item => {
+                            if (filterCategory === "ALL") return true;
+                            if (filterCategory === "BANDUNG") return (item.areaConfirmed || '').toLowerCase().includes('bandung');
+                            if (filterCategory === "SOREANG") return (item.areaConfirmed || '').toLowerCase().includes('soreang');
+                            return true;
+                        }).map((item, index) => (
                             <div key={item.id || index} className="card" style={{ display: 'block', padding: '20px' }}>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px' }}>
                                     <span style={{ fontSize: '13px', fontWeight: 600, color: '#86868b', background: '#f5f5f7', padding: '4px 8px', borderRadius: '6px' }}>{item.id}</span>
