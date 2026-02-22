@@ -190,7 +190,7 @@ export default function MOSPage() {
                 <div className="logo-container">
                     <img src="/baraya_logo.png" className="logo-img" alt="Logo" />
                 </div>
-                <h1 className="title">MOS Dashboard</h1>
+                <h1 className="title">MOS Dashboard <span style={{fontSize: '10px', opacity: 0.5}}>v1.1</span></h1>
                 <p className="subtitle">SPPG Bandung Raya - Tahap 1</p>
                 
                 <button 
