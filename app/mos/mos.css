@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap');
+
+:root {
+    --primary: #4f46e5;
+    --primary-light: #818cf8;
+    --primary-glow: rgba(99, 102, 241, 0.3);
+    /* Soft mesh gradient background */
+    --bg-mesh: linear-gradient(135deg, #e0f2fe 0%, #e0e7ff 50%, #f5f3ff 100%);
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+}
+
+.mos-app {
+    min-height: 100vh;
+    background: #f0f7ff;
+    font-family: 'Outfit', sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    position: relative;
+}
+
+.mos-app::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/baraya_logo.png');
+    background-size: 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.mobile-container {
+    width: 100%;
+    max-width: 448px;
+    min-height: 100vh;
+    background: transparent;
+    position: relative;
+    z-index: 1;
+    padding: 1.5rem;
+    /* Samakan dengan Material */
+    padding-bottom: 9rem;
+}
+
+.header {
+    text-align: center;
+    padding: 2.5rem 0 1rem;
+    position: relative;
+    z-index: 10;
+}
+
+.header-logo {
+    height: 100px;
+    width: auto;
+    margin-bottom: 0.25rem;
+    mix-blend-mode: multiply;
+}
+
+.header h1 {
+    font-size: 1.8rem;
+    /* Samakan dengan Material (1.8rem) */
+    font-weight: 800;
+    color: #4338ca;
+    margin: 0 0 0.25rem 0;
+    letter-spacing: -0.02em;
+}
+
+.header p {
+    color: #64748b;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.mos-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    padding: 0 0.5rem;
+    /* Samakan padding */
+    margin-bottom: 1.5rem;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-radius: 1.5rem;
+    padding: 1.25rem 0.5rem;
+    text-align: center;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.stat-number {
+    font-size: 1.8rem;
+    /* Sedikit dikecilkan agar fit */
+    font-weight: 800;
+    color: #4338ca;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.mos-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-radius: 2rem;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.mos-header {
+    margin-bottom: 1rem;
+}
+
+.mos-id-section {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.mos-id {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #4338ca;
+    letter-spacing: 0.02em;
+}
+
+.priority-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.priority-p2 {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    color: white;
+}
+
+.priority-p3 {
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+    color: white;
+}
+
+.mos-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #475569;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.mos-body {
+    padding: 1rem 0;
+    border-top: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.info-row:last-child {
+    margin-bottom: 0;
+}
+
+.info-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.info-value {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.mos-footer {
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border-radius: 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.timestamp-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.85rem;
+    background: rgba(99, 102, 241, 0.1);
+    color: #4338ca;
+    border-radius: 0.85rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.timestamp-badge svg {
+    flex-shrink: 0;
+}
+
+/* Floating Bottom Navigation */
+.bottom-nav {
+    position: fixed;
+    bottom: 2rem;
+    width: calc(100% - 3rem);
+    max-width: 402px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(25px) saturate(200%);
+    -webkit-backdrop-filter: blur(25px) saturate(200%);
+    padding: 0.85rem;
+    border-radius: 2.25rem;
+    display: flex;
+    gap: 0.85rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    z-index: 1000;
+}
+
+.btn-nav-sec {
+    flex: 1;
+    background: rgba(241, 245, 249, 0.8);
+    color: #475569;
+    border: none;
+    padding: 0.9rem;
+    border-radius: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.9rem;
+}
+
+.btn-nav-pri {
+    flex: 1;
+    background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+    color: white;
+    border: none;
+    padding: 0.9rem;
+    border-radius: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    box-shadow: 0 10px 20px -5px rgba(79, 70, 229, 0.4);
+    font-family: inherit;
+    font-size: 0.9rem;
+}
