@@ -6,7 +6,7 @@ import { useAuth } from "../hooks/useAuth";
 const getDisplayArea = (item) => {
     const area = (item.areaConfirmed || '').toLowerCase();
     const hsa = (item.hsa || '').toUpperCase();
-    if (hsa.includes('BJA') || hsa.includes('MJY') || area.includes('soreang')) {
+    if (hsa.includes('BJA') || hsa.includes('MJY') || hsa.includes('TAS') || hsa.includes('SMD') || area.includes('soreang')) {
         return 'SOREANG';
     }
     if (area.includes('bandung')) {
@@ -192,7 +192,7 @@ export default function MOSPage() {
                 <div className="logo-container">
                     <img src="/baraya_logo.png" className="logo-img" alt="Logo" />
                 </div>
-                <h1 className="title">MOS Dashboard <span style={{fontSize: '10px', opacity: 0.5}}>v1.1</span></h1>
+                <h1 className="title">MOS Dashboard <span style={{fontSize: '10px', opacity: 0.5}}>v1.2</span></h1>
                 <p className="subtitle">SPPG Bandung Raya - Tahap 1</p>
                 
                 <button 
