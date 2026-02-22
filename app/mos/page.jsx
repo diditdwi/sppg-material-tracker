@@ -89,7 +89,7 @@ export default function MOSPage() {
             const json = await res.json();
             
             if (json.status === 'success') {
-                const { mosData: serverMosData, wiringData } = json;
+                const { mosData: serverMosData, wiringData, installData } = json;
                 
                 // 1. Format MOS Data
                 // Filter MOS data (server side sudah filter status=TRUE, tapi kita pastikan jika perlu)
@@ -135,6 +135,20 @@ export default function MOSPage() {
                     report += `${line}\n`;
                 });
 
+                // 3. Format Install Data
+                if (installData && installData.length > 0) {
+                    report += `\nInstall berdasarkan SPPG: ${installData.length}\n`;
+                    installData.forEach(item => {
+                        let line = `- ${item.id} ${item.name}`;
+                        if (item.hsa) line += ` (${item.hsa})`;
+                        line += ` - ${item.konfirmArea}`;
+                        if (item.keterangan && item.keterangan.trim() !== '') {
+                            line += ` - ${item.keterangan}`;
+                        }
+                        report += `${line}\n`;
+                    });
+                }
+
                 setReportText(report);
             } else {
                 setReportText(`Gagal mengambil data: ${json.message || 'Unknown error'}`);
@@ -142,7 +156,7 @@ export default function MOSPage() {
 
         } catch (e) {
             console.error("Report Error", e);
-            setReportText(`Gagal mengambil data report: ${e.message}\n\nPastikan Script Google V5 sudah dideploy!`);
+            setReportText(`Gagal mengambil data report: ${e.message}\n\nPastikan Script Google V13 sudah dideploy!`);
         } finally {
             setLoadingReport(false);
         }
