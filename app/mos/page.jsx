@@ -3,7 +3,17 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../hooks/useAuth";
-
+const getDisplayArea = (item) => {
+    const area = (item.areaConfirmed || '').toLowerCase();
+    const hsa = (item.hsa || '').toUpperCase();
+    if (hsa.includes('BJA') || hsa.includes('MJY') || area.includes('soreang')) {
+        return 'SOREANG';
+    }
+    if (area.includes('bandung')) {
+        return 'BANDUNG';
+    }
+    return area.includes('soreang') ? 'SOREANG' : 'BANDUNG';
+};
 
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxatlMa3xiQUwr_f7pCU2Z85Zd-oqd_aSYyTY9_FNEIoo5st23d4ytCam49rRyqlzGu/exec';
 const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRpsBh5iWffHeuniaAYLlfDVM5MaT8z2W88vxHp7knd3tz-6d3ZfLgyHmr0Ij6JD3wBwdVsxrUbhNBN/pub?gid=70199566&single=true&output=csv";
@@ -199,11 +209,11 @@ export default function MOSPage() {
                     <div style={{ fontSize: '12px', color: '#86868b', textAlign: 'center' }}>Siap MOS</div>
                 </div>
                 <div onClick={() => setFilterCategory("BANDUNG")} className="card" style={{ flexDirection: 'column', alignItems: 'center', padding: '20px 10px', gap: '8px', cursor: 'pointer', border: filterCategory === "BANDUNG" ? '2px solid #34c759' : '2px solid transparent' }}>
-                    <div style={{ fontSize: '24px', fontWeight: 700, color: '#34c759' }}>{mosData.filter(d => (d.areaConfirmed || '').toLowerCase().includes('bandung')).length}</div>
+                    <div style={{ fontSize: '24px', fontWeight: 700, color: '#34c759' }}>{mosData.filter(d => getDisplayArea(d) === 'BANDUNG').length}</div>
                     <div style={{ fontSize: '12px', color: '#86868b', textAlign: 'center' }}>Bandung</div>
                 </div>
                 <div onClick={() => setFilterCategory("SOREANG")} className="card" style={{ flexDirection: 'column', alignItems: 'center', padding: '20px 10px', gap: '8px', cursor: 'pointer', border: filterCategory === "SOREANG" ? '2px solid #ff9500' : '2px solid transparent' }}>
-                    <div style={{ fontSize: '24px', fontWeight: 700, color: '#ff9500' }}>{mosData.filter(d => (d.areaConfirmed || '').toLowerCase().includes('soreang')).length}</div>
+                    <div style={{ fontSize: '24px', fontWeight: 700, color: '#ff9500' }}>{mosData.filter(d => getDisplayArea(d) === 'SOREANG').length}</div>
                     <div style={{ fontSize: '12px', color: '#86868b', textAlign: 'center' }}>Soreang</div>
                 </div>
             </div>
@@ -221,8 +231,8 @@ export default function MOSPage() {
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                         {mosData.filter(item => {
                             if (filterCategory === "ALL") return true;
-                            if (filterCategory === "BANDUNG") return (item.areaConfirmed || '').toLowerCase().includes('bandung');
-                            if (filterCategory === "SOREANG") return (item.areaConfirmed || '').toLowerCase().includes('soreang');
+                            if (filterCategory === "BANDUNG") return getDisplayArea(item) === 'BANDUNG';
+                            if (filterCategory === "SOREANG") return getDisplayArea(item) === 'SOREANG';
                             return true;
                         }).map((item, index) => (
                             <div key={item.id || index} className="card" style={{ display: 'block', padding: '20px' }}>
@@ -230,12 +240,12 @@ export default function MOSPage() {
                                     <span style={{ fontSize: '13px', fontWeight: 600, color: '#86868b', background: '#f5f5f7', padding: '4px 8px', borderRadius: '6px' }}>{item.id}</span>
                                     <span style={{ 
                                         fontSize: '12px', fontWeight: 700, 
-                                        color: (item.areaConfirmed || '').toLowerCase().includes('bandung') ? '#34c759' : '#ff9500',
-                                        background: (item.areaConfirmed || '').toLowerCase().includes('bandung') ? '#dcfce7' : '#ffedd5',
+                                        color: getDisplayArea(item) === 'BANDUNG' ? '#34c759' : '#ff9500',
+                                        background: getDisplayArea(item) === 'BANDUNG' ? '#dcfce7' : '#ffedd5',
                                         padding: '4px 8px', borderRadius: '99px',
                                         textTransform: 'uppercase'
                                     }}>
-                                        {(item.areaConfirmed || '').toLowerCase().includes('bandung') ? 'BANDUNG' : 'SOREANG'}
+                                        {getDisplayArea(item)}
                                     </span>
                                 </div>
                                 <h3 style={{ fontSize: '17px', fontWeight: 600, color: '#1d1d1f', marginBottom: '16px', lineHeight: 1.4 }}>{item.name}</h3>
