@@ -147,6 +147,8 @@ export default function MOSPage() {
                         }
                         report += `${line}\n`;
                     });
+                } else {
+                    report += `\nInstall berdasarkan SPPG: (Data Kosong - Cek Nama Sheet di Script V14)\n`;
                 }
 
                 setReportText(report);
@@ -156,7 +158,7 @@ export default function MOSPage() {
 
         } catch (e) {
             console.error("Report Error", e);
-            setReportText(`Gagal mengambil data report: ${e.message}\n\nPastikan Script Google V13 sudah dideploy!`);
+            setReportText(`Gagal mengambil data report: ${e.message}\n\nPastikan Script Google V14 sudah dideploy!`);
         } finally {
             setLoadingReport(false);
         }
