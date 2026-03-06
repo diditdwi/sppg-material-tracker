@@ -57,7 +57,7 @@ export default function Home() {
       title: "Isi BAST Cepat",
       desc: "Auto-fill dokumen BAST",
       icon: "⚡",
-      href: "https://crown-costs-rrp-lit.trycloudflare.com",
+      href: "https://polls-infringement-visit-yeast.trycloudflare.com",
       colorClass: "icon-orange"
     }
   ];
