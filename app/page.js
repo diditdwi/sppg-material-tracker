@@ -57,7 +57,7 @@ export default function Home() {
       title: "Isi BAST Cepat",
       desc: "Auto-fill dokumen BAST",
       icon: "⚡",
-      href: "https://deputy-lyrics-incentive-cooper.trycloudflare.com",
+      href: "https://girls-general-lands-den.trycloudflare.com",
       colorClass: "icon-orange"
     }
   ];
