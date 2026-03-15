@@ -57,7 +57,7 @@ export default function Home() {
       title: "Isi BAST Cepat",
       desc: "Auto-fill dokumen BAST",
       icon: "⚡",
-      href: "https://girls-general-lands-den.trycloudflare.com",
+      href: "$NEW_URL",
       colorClass: "icon-orange"
     }
   ];
