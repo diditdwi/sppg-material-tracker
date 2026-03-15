@@ -73,22 +73,40 @@ export default function Home() {
       </header>
 
       <div className="grid">
-        {MENU_ITEMS.map((item, index) => (
-          <Link href={item.href} key={index} className="card">
-            <div className={`card-icon ${item.colorClass}`}>
-              {item.icon}
-            </div>
-            <div className="card-content">
-              <h3 className="card-title">{item.title}</h3>
-              <p className="card-desc">{item.desc}</p>
-            </div>
-            <div className="card-arrow">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M9 18l6-6-6-6" />
-              </svg>
-            </div>
-          </Link>
-        ))}
+        {MENU_ITEMS.map((item, index) => {
+          const isExternal = item.href.startsWith("http");
+          return isExternal ? (
+            <a href={item.href} key={index} className="card" target="_blank" rel="noopener noreferrer">
+              <div className={`card-icon ${item.colorClass}`}>
+                {item.icon}
+              </div>
+              <div className="card-content">
+                <h3 className="card-title">{item.title}</h3>
+                <p className="card-desc">{item.desc}</p>
+              </div>
+              <div className="card-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </div>
+            </a>
+          ) : (
+            <Link href={item.href} key={index} className="card">
+              <div className={`card-icon ${item.colorClass}`}>
+                {item.icon}
+              </div>
+              <div className="card-content">
+                <h3 className="card-title">{item.title}</h3>
+                <p className="card-desc">{item.desc}</p>
+              </div>
+              <div className="card-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </div>
+            </Link>
+          );
+        })}
       </div>
 
       <footer className="footer">
