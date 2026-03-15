@@ -57,7 +57,7 @@ export default function Home() {
       title: "Isi BAST Cepat",
       desc: "Auto-fill dokumen BAST",
       icon: "⚡",
-      href: "$NEW_URL",
+      href: "https://arizona-wings-solid-genetics.trycloudflare.com",
       colorClass: "icon-orange"
     }
   ];
