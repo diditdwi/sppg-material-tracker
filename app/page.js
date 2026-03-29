@@ -57,7 +57,7 @@ export default function Home() {
       title: "Isi BAST Cepat",
       desc: "Auto-fill dokumen BAST",
       icon: "⚡",
-      href: "http://31.97.221.75:5000",
+      href: "http://31.97.221.75",
       colorClass: "icon-orange"
     }
   ];
