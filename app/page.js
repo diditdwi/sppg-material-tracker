@@ -57,7 +57,7 @@ export default function Home() {
       title: "Isi BAST Cepat",
       desc: "Auto-fill dokumen BAST",
       icon: "⚡",
-      href: "http://31.97.221.75",
+      href: "https://livestock-would-saying-bands.trycloudflare.com",
       colorClass: "icon-orange"
     }
   ];
