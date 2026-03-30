@@ -57,7 +57,7 @@ export default function Home() {
       title: "Isi BAST Cepat",
       desc: "Auto-fill dokumen BAST",
       icon: "⚡",
-      href: "https://composer-notre-advertisement-comment.trycloudflare.com",
+      href: "https://contains-encyclopedia-their-ala.trycloudflare.com",
       colorClass: "icon-orange"
     }
   ];
