@@ -57,7 +57,7 @@ export default function Home() {
       title: "Isi BAST Cepat",
       desc: "Auto-fill dokumen BAST",
       icon: "⚡",
-      href: "https://contains-encyclopedia-their-ala.trycloudflare.com",
+      href: "https://doll-priced-theory-meat.trycloudflare.com",
       colorClass: "icon-orange"
     }
   ];
