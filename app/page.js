@@ -64,7 +64,7 @@ export default function Home() {
       title: "Isi BAST Cepat",
       desc: "Auto-fill dokumen BAST",
       icon: "⚡",
-      href: "https://mono-briefly-opportunity-currency.trycloudflare.com",
+      href: "http://31.97.221.75:5000",
       colorClass: "icon-orange"
     }
   ];
