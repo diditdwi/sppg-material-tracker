@@ -54,10 +54,17 @@ export default function Home() {
       colorClass: "icon-blue"
     },
     {
+      title: "Data Perangkat",
+      desc: "Inventaris perangkat & SN",
+      icon: "🖥️",
+      href: "/perangkat",
+      colorClass: "icon-orange"
+    },
+    {
       title: "Isi BAST Cepat",
       desc: "Auto-fill dokumen BAST",
       icon: "⚡",
-      href: "https://doll-priced-theory-meat.trycloudflare.com",
+      href: "https://mono-briefly-opportunity-currency.trycloudflare.com",
       colorClass: "icon-orange"
     }
   ];
